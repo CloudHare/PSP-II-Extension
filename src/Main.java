@@ -6,6 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         SushiBarAutomaton automaton = new BasicSushiBarAutomaton();
+        automaton.addExtension(new PremiumExtension());
 
         List<FoodItem> menu = automaton.getMenu();
         System.out.println("Menu:");
@@ -14,7 +15,8 @@ public class Main {
         }
 
         automaton.orderSushi("salmon");
-        automaton.orderSushi("salmon");
+        automaton.getExtension(PremiumExtension.class).get().addExtraToSushi("wasabi");
+        automaton.orderSushi("tuna");
 
         System.out.println("Total: " + automaton.getOrderPrice());
     }

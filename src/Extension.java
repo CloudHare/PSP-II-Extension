@@ -3,7 +3,8 @@ import structs.FoodItem;
 import java.util.List;
 
 public interface Extension {
-    void setSushiBarAutomaton(SushiBarAutomaton automaton);
 
     List<FoodItem> getMenu();
+
+    void setSushiBarAutomaton(SushiBarAutomaton automaton);
 }

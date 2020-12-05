@@ -12,5 +12,5 @@ public interface SushiBarAutomaton {
 
     void addExtension(Extension extension);
 
-    Optional<Extension> getExtension(Class<?> extensionClass);
+    <T extends Extension> Optional<T> getExtension(Class<T> extensionClass);
 }

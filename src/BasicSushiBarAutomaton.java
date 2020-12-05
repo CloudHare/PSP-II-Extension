@@ -62,20 +62,22 @@ public class BasicSushiBarAutomaton implements SushiBarAutomaton{
         return menuClone;
     }
 
-    protected void addExtraToSushi(String name, int price) {
-        orders.get(orders.size()-1).addExtra(new FoodItem(name, price));
+    protected void addExtraToSushi(FoodItem extra) {
+        orders.get(orders.size()-1).addExtra(extra);
     }
 
     @Override
     public void addExtension(Extension  extension) {
         this.extensions.add(extension);
+        extension.setSushiBarAutomaton(this);
     }
 
 
     @Override
-    public Optional<Extension> getExtension(Class<?> extensionClass) {
+    public <T extends Extension> Optional<T> getExtension(Class<T> extensionClass) {
         return extensions.stream()
                 .filter(extension -> extensionClass.isInstance(extension))
+                .map(extension -> (T) extension)
                 .findFirst();
     }
 }
