@@ -40,10 +40,6 @@ public class BasicSushiBarAutomaton implements SushiBarAutomaton{
             }
         }
 
-        for (Extension extension: extensions) {
-            totalPrice += extension.getOrderPrice();
-        }
-
         return totalPrice;
     }
 
